@@ -26,13 +26,15 @@
 				<s:property value="#request.mymessage" />
 				<br />
 			</div>
-			<s:form action="login"  >
+			<s:form action="login">
 				<s:textfield name="loginInfo.login" label="Login" />
 				<s:password name="loginInfo.password" label="Password" />
 				<s:textfield name="loginInfo.captcha" label="Introduce 23344343" />
 				<s:submit />
 			</s:form>
-
+		</article>
+		<article>
+			<s:a action="register-form"><s:text name="registro" /></s:a>
 		</article>
 	</section>
 	<footer>
