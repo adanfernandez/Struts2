@@ -21,9 +21,7 @@ import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 })
 
 @Validations(requiredStrings = {
-		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.name", message = "You must enter a value for name"),
-		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.email", message = "You must enter a value for email"),
-		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.phone", message = "You must enter a value for phone"),
+		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.username", message = "You must enter a value for username"),
 		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.password", message = "You must enter a value for password"),
 		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.repeatPassword", message = "You must enter a value for the confirmation of the password") })
 
@@ -46,14 +44,14 @@ public class RegisterAction extends ActionSupport implements RequestAware {
 	@Override
 	public void validate() {
 		logger.debug("validating RegisterAction");
-		if (user.getName().length() > 150) {
-			addFieldError("user.name", "Name field should not be emtpy and have a max length of 150 characters");
-		}
-		if (user.getEmail().length() > 100) {
-			addFieldError("user.email", "Email field should not be emtpy and have a max length of 100 characters");
+		if (user.getUsername().length() > 150) {
+			addFieldError("user.username", "Username field should not be emtpy and have a max length of 150 characters");
 		}
 		if (user.getPhone().length() > 30) {
 			addFieldError("user.phone", "Phone field should not be emtpy and have a max length of 30 characters");
+		}
+		if (user.getAge() > 200) {
+			addFieldError("user.age", "Age field should not be greater than 200");
 		}
 		if (user.getPassword().length() > 100) {
 			addFieldError("user.password",
@@ -74,7 +72,7 @@ public class RegisterAction extends ActionSupport implements RequestAware {
 		logger.debug("Execute RegisterAction");
 		UserManagerServiceHelper helper = new UserManagerServiceHelper();
 		System.out.println("Creado helper");
-		User u = helper.getUserByEmail(user.getEmail());
+		User u = helper.getUserByUsername(user.getUsername());
 		if (u != null) {
 			helper.saveUser(user);
 			return SUCCESS;

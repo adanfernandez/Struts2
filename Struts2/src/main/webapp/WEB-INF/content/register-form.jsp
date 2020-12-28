@@ -27,9 +27,9 @@
 				<br />
 			</div>
 			<s:form action="register"  >
-				<s:textfield name="user.name" label="name" />
-				<s:textfield name="user.email" label="email" />
+				<s:textfield name="user.username" label="username" />
 				<s:textfield name="user.phone" label="phone" />
+				<s:textfield name="user.age" label="age" />
 				<s:password name="user.password" label="password" />
 				<s:password name="user.repeatPassword" label="Repeat password" />
 				<s:submit label="registro" />

@@ -8,8 +8,8 @@ public class UserDataServiceHelper {
 		(Factories.dataServices.getUserDataService()).saveUser(user);
 	}
 	
-	public User getUserByEmail(String login) {
-		return (Factories.dataServices.getUserDataService()).getUserByEmail(login);
+	public User getUserByUsername(String username) {
+		return (Factories.dataServices.getUserDataService()).getUserByUsername(username);
 	}
 	
 	public boolean userExists(String login, String password) {

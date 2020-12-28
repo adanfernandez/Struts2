@@ -6,7 +6,7 @@ public interface UserManagerService {
 
 	public void saveUser(User user);
 
-	public User getUserByEmail(String login);
+	public User getUserByUsername(String login);
 
 	public boolean userExists(String login, String password);
 	

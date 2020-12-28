@@ -12,8 +12,8 @@ public class UserManagerServiceHelper {
 		(Factories.services.getUserManagerService()).saveUser(user);
 	}
 	
-	public User getUserByEmail(String login) {
-		return (Factories.services.getUserManagerService()).getUserByEmail(login);
+	public User getUserByUsername(String username) {
+		return (Factories.services.getUserManagerService()).getUserByUsername(username);
 	}
 	
 	public boolean userExists(String login, String password) {
