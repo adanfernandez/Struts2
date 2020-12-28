@@ -6,7 +6,7 @@ public interface UserManagerService {
 
 	public void saveUser(User user);
 
-	public User getUserByUsername(String login);
+	public User getUserByUsername(String login) throws Exception;
 
 	public boolean userExists(String login, String password);
 	

@@ -8,7 +8,7 @@ public class UserDataServiceHelper {
 		(Factories.dataServices.getUserDataService()).saveUser(user);
 	}
 	
-	public User getUserByUsername(String username) {
+	public User getUserByUsername(String username) throws Exception {
 		return (Factories.dataServices.getUserDataService()).getUserByUsername(username);
 	}
 	

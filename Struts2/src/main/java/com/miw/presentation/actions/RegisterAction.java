@@ -21,44 +21,44 @@ import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 })
 
 @Validations(requiredStrings = {
-		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.username", message = "You must enter a value for username"),
-		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.password", message = "You must enter a value for password"),
-		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.repeatPassword", message = "You must enter a value for the confirmation of the password") })
+		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.username", message = "You must enter a value for username"),
+		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.password", message = "You must enter a value for password"),
+		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.repeatPassword", message = "You must enter a value for the confirmation of the password") })
 
 
 public class RegisterAction extends ActionSupport implements RequestAware {
 
 	Logger logger = Logger.getLogger(this.getClass());
 	private static final long serialVersionUID = 2651261795976314789L;
-	private User user = null;
+	private User registerInfo = null;
 	private Map<String, Object> request;
 
-	public User getUser() {
-		return user;
+	public User getRegisterInfo() {
+		return registerInfo;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setRegisterInfo(User registerInfo) {
+		this.registerInfo = registerInfo;
 	}
 
 	@Override
 	public void validate() {
 		logger.debug("validating RegisterAction");
-		if (user.getUsername().length() > 150) {
-			addFieldError("user.username", "Username field should not be emtpy and have a max length of 150 characters");
+		if (registerInfo.getUsername().length() > 150) {
+			addFieldError("registerInfo.username", "Username field should not be emtpy and have a max length of 150 characters");
 		}
-		if (user.getPhone().length() > 30) {
-			addFieldError("user.phone", "Phone field should not be emtpy and have a max length of 30 characters");
+		if (registerInfo.getPhone().length() > 30) {
+			addFieldError("registerInfo.phone", "Phone field should not be emtpy and have a max length of 30 characters");
 		}
-		if (user.getAge() > 200) {
-			addFieldError("user.age", "Age field should not be greater than 200");
+		if (registerInfo.getAge() > 200) {
+			addFieldError("registerInfo.age", "Age field should not be greater than 200");
 		}
-		if (user.getPassword().length() > 100) {
-			addFieldError("user.password",
+		if (registerInfo.getPassword().length() > 100) {
+			addFieldError("registerInfo.password",
 					"Password field should not be emtpy and have a max length of 100 characters");
 		}
-		if (!(user.getPassword().equals(user.getRepeatPassword()))) {
-			addFieldError("user.repeatPassword", "Password field and its confirmation should be equal");
+		if (!(registerInfo.getPassword().equals(registerInfo.getRepeatPassword()))) {
+			addFieldError("registerInfo.repeatPassword", "Password field and its confirmation should be equal");
 		}
 		super.validate();
 	}
@@ -68,18 +68,15 @@ public class RegisterAction extends ActionSupport implements RequestAware {
 	}
 
 	@Override
-	public String execute() {
+	public String execute() throws Exception {
 		logger.debug("Execute RegisterAction");
 		UserManagerServiceHelper helper = new UserManagerServiceHelper();
-		System.out.println("Creado helper");
-		User u = helper.getUserByUsername(user.getUsername());
-		if (u != null) {
-			helper.saveUser(user);
+		User u = helper.getUserByUsername(registerInfo.getUsername());
+		if (u == null) {
+			helper.saveUser(registerInfo);
 			return SUCCESS;
 		}
-		// Para comprobar redirecciones ponemos el return SUCCESS. 			¡¡QUITARLO!!
-		//return ERROR;
-		return SUCCESS;
+		return ERROR;
 	}
 
 }

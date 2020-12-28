@@ -12,7 +12,7 @@ public class UserManagerServiceHelper {
 		(Factories.services.getUserManagerService()).saveUser(user);
 	}
 	
-	public User getUserByUsername(String username) {
+	public User getUserByUsername(String username) throws Exception {
 		return (Factories.services.getUserManagerService()).getUserByUsername(username);
 	}
 	

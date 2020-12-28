@@ -14,7 +14,7 @@ public class UserManager implements UserManagerService {
 		(new UserDataServiceHelper()).saveUser(user);
 	}
 
-	public User getUserByUsername(String username) {
+	public User getUserByUsername(String username) throws Exception {
 		logger.debug("Getting user by login");
 		return (new UserDataServiceHelper()).getUserByUsername(username);
 	}
