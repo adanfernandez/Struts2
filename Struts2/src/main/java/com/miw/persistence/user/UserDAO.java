@@ -39,10 +39,4 @@ public class UserDAO implements UserDataService {
 			dba.closeEm();
 		}
 	}
-
-	public boolean userExists(String login, String password) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

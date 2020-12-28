@@ -11,8 +11,4 @@ public class UserDataServiceHelper {
 	public User getUserByUsername(String username) throws Exception {
 		return (Factories.dataServices.getUserDataService()).getUserByUsername(username);
 	}
-	
-	public boolean userExists(String login, String password) {
-		return (Factories.dataServices.getUserDataService()).userExists(login, password);
-	}
 }

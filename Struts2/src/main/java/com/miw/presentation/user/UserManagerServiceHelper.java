@@ -16,7 +16,7 @@ public class UserManagerServiceHelper {
 		return (Factories.services.getUserManagerService()).getUserByUsername(username);
 	}
 	
-	public boolean userExists(String login, String password) {
-		return (Factories.services.getUserManagerService()).userExists(login, password);
+	public User getUserByCredentials(String login, String password) throws Exception {
+		return (Factories.services.getUserManagerService()).getUserByCredentials(login, password);
 	}
 }

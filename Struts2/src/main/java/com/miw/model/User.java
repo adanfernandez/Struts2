@@ -15,6 +15,7 @@ public class User {
 	private int age;
 	private String phone;
 	private String password;
+	private boolean admin;
 	@Transient
 	private String repeatPassword;
 
@@ -68,6 +69,14 @@ public class User {
 
 	public void setRepeatPassword(String repeatPassword) {
 		this.repeatPassword = repeatPassword;
+	}
+	
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	@Override

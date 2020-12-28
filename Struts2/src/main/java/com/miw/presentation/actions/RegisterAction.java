@@ -74,6 +74,7 @@ public class RegisterAction extends ActionSupport implements RequestAware {
 		User u = helper.getUserByUsername(registerInfo.getUsername());
 		if (u == null) {
 			helper.saveUser(registerInfo);
+			logger.debug("RegisterAction completed");
 			return SUCCESS;
 		}
 		return ERROR;

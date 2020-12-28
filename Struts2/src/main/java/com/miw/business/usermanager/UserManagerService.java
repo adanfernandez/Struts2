@@ -8,6 +8,6 @@ public interface UserManagerService {
 
 	public User getUserByUsername(String login) throws Exception;
 
-	public boolean userExists(String login, String password);
+	public User getUserByCredentials(String login, String password) throws Exception;
 	
 }

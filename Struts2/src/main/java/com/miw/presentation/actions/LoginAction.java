@@ -9,6 +9,8 @@ import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.miw.model.LoginInfo;
+import com.miw.model.User;
+import com.miw.presentation.user.UserManagerServiceHelper;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
@@ -64,6 +66,24 @@ public class LoginAction extends ActionSupport implements RequestAware, SessionA
 
 			return "captcha-error";
 		}
+		
+		UserManagerServiceHelper helper = new UserManagerServiceHelper();
+		User user = helper.getUserByCredentials(login.getLogin(), login.getPassword());
+		
+		if(user == null) {
+			logger.debug("Credentials are wrong: " + login);
+			request.put("mymessage", "Wrong credentials");
+			return "login-error";
+		} else if(user.isAdmin()) {
+			logger.debug("Login as admin user");
+			session.put("loginInfo", login);
+			return SUCCESS;
+		} else {
+			logger.debug("Login as standard user");
+			session.put("loginInfo", login);
+			return SUCCESS;
+		}
+		/*
 		// We do a very basic authentication :).
 		if (login.getLogin().equals("admin") && login.getPassword().equals("amazin")) {
 			logger.debug("Loggin in!: " + login);
@@ -73,7 +93,7 @@ public class LoginAction extends ActionSupport implements RequestAware, SessionA
 			logger.debug("Credentials are wrong: " + login);
 			request.put("mymessage", "Wrong credentials");
 			return "login-error";
-		}
+		}*/
 	}
 
 	public void setRequest(Map<String, Object> request) {
