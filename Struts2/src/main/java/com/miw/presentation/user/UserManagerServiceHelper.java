@@ -1,5 +1,7 @@
 package com.miw.presentation.user;
 
+import javax.persistence.NoResultException;
+
 import org.apache.log4j.Logger;
 
 import com.miw.infrastructure.Factories;
@@ -12,11 +14,11 @@ public class UserManagerServiceHelper {
 		(Factories.services.getUserManagerService()).saveUser(user);
 	}
 	
-	public User getUserByUsername(String username) throws Exception {
+	public User getUserByUsername(String username) throws NoResultException {
 		return (Factories.services.getUserManagerService()).getUserByUsername(username);
 	}
 	
-	public User getUserByCredentials(String login, String password) throws Exception {
+	public User getUserByCredentials(String login, String password) throws NoResultException {
 		return (Factories.services.getUserManagerService()).getUserByCredentials(login, password);
 	}
 }

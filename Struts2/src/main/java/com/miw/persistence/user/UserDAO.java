@@ -1,6 +1,7 @@
 package com.miw.persistence.user;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import org.apache.log4j.Logger;
 
@@ -25,7 +26,7 @@ public class UserDAO implements UserDataService {
 		}
 	}
 
-	public User getUserByUsername(String username) throws Exception {
+	public User getUserByUsername(String username) throws NoResultException {
 		Dba dba = new Dba();
 		try {
 			EntityManager em = dba.getActiveEm();
@@ -33,7 +34,7 @@ public class UserDAO implements UserDataService {
 					.setParameter(1, username)
 					.getSingleResult();
 			return user;
-		} catch(Exception e) {
+		} catch(NoResultException e) {
 			return null;
 		} finally {
 			dba.closeEm();

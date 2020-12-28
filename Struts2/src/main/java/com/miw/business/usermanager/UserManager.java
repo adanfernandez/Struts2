@@ -1,5 +1,7 @@
 package com.miw.business.usermanager;
 
+import javax.persistence.NoResultException;
+
 import org.apache.log4j.Logger;
 
 import com.miw.business.UserDataServiceHelper;
@@ -14,12 +16,12 @@ public class UserManager implements UserManagerService {
 		(new UserDataServiceHelper()).saveUser(user);
 	}
 
-	public User getUserByUsername(String username) throws Exception {
+	public User getUserByUsername(String username) throws NoResultException {
 		logger.debug("Getting user by username");
 		return (new UserDataServiceHelper()).getUserByUsername(username);
 	}
 
-	public User getUserByCredentials(String username, String password) throws Exception {
+	public User getUserByCredentials(String username, String password) throws NoResultException {
 		logger.debug("Checking if user exists by username and password");
 		User user = (new UserDataServiceHelper()).getUserByUsername(username);
 		if(user.getPassword().equals(password)) {
