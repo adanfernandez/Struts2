@@ -12,7 +12,17 @@ public class UserDAO implements UserDataService {
 	protected Logger logger = Logger.getLogger(getClass());
 
 	public void saveUser(User user) {
-		// TODO Auto-generated method stub
+		Dba dba = new Dba();
+		try {
+			EntityManager em = dba.getActiveEm();
+			em.persist(user);
+			em.getTransaction().commit();
+			logger.debug("User saved");
+		} catch(Exception e) {
+			
+		} finally {
+			dba.closeEm();
+		}
 	}
 
 	public User getUserByUsername(String username) throws Exception {
