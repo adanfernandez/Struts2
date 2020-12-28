@@ -14,9 +14,9 @@ public class UserManager implements UserManagerService {
 		(new UserDataServiceHelper()).saveUser(user);
 	}
 
-	public User getUserByLogin(String login) {
+	public User getUserByEmail(String login) {
 		logger.debug("Getting user by login");
-		return (new UserDataServiceHelper()).getUserByLogin(login);
+		return (new UserDataServiceHelper()).getUserByEmail(login);
 	}
 
 	public boolean userExists(String login, String password) {

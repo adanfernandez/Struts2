@@ -12,7 +12,7 @@ public class UserDAO implements UserDataService {
 		// TODO Auto-generated method stub
 	}
 
-	public User getUserByLogin(String login) {
+	public User getUserByEmail(String login) {
 		// TODO Auto-generated method stub
 		return null;
 	}

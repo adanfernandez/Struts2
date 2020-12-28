@@ -31,7 +31,7 @@
 				<s:textfield name="user.email" label="email" />
 				<s:textfield name="user.phone" label="phone" />
 				<s:password name="user.password" label="password" />
-				<s:password name="user.passwordConfirm" label="passwordConfirm" />
+				<s:password name="user.repeatPassword" label="Repeat password" />
 				<s:submit label="registro" />
 			</s:form>
 		</article>

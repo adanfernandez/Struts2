@@ -1,10 +1,13 @@
 package com.miw.model;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+@Entity
 public class User {
+	
 	@Id
 	@GeneratedValue
 	private int id; 
@@ -76,5 +79,11 @@ public class User {
 
 	public void setRepeatPassword(String repeatPassword) {
 		this.repeatPassword = repeatPassword;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password=" + password
+				+ ", repeatPassword=" + repeatPassword + "]";
 	}
 }
