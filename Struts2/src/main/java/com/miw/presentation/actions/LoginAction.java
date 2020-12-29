@@ -74,26 +74,11 @@ public class LoginAction extends ActionSupport implements RequestAware, SessionA
 			logger.debug("Credentials are wrong: " + login);
 			request.put("mymessage", "Wrong credentials");
 			return "login-error";
-		} else if(user.isAdmin()) {
-			logger.debug("Login as admin user");
-			session.put("loginInfo", login);
-			return SUCCESS;
 		} else {
-			logger.debug("Login as standard user");
-			session.put("loginInfo", login);
+			logger.debug("Login completed");
+			session.put("userInfo", user);
 			return SUCCESS;
 		}
-		/*
-		// We do a very basic authentication :).
-		if (login.getLogin().equals("admin") && login.getPassword().equals("amazin")) {
-			logger.debug("Loggin in!: " + login);
-			session.put("loginInfo", login);
-			return SUCCESS;
-		} else {
-			logger.debug("Credentials are wrong: " + login);
-			request.put("mymessage", "Wrong credentials");
-			return "login-error";
-		}*/
 	}
 
 	public void setRequest(Map<String, Object> request) {
