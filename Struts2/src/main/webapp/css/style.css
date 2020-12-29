@@ -12,6 +12,10 @@ body {
 	text-align: center;
 }
 
+.errorMessage {
+	color: red;
+}
+
 p {
 	color: white;
 	background-color: black;
