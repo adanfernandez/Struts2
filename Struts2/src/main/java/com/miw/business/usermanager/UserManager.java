@@ -11,9 +11,14 @@ public class UserManager implements UserManagerService {
 
 	Logger logger = Logger.getLogger(this.getClass());
 
-	public void saveUser(User user) {
+	public boolean registerUser(User user) {
 		logger.debug("Saving user");
-		(new UserDataServiceHelper()).saveUser(user);
+		User user_by_username = (new UserDataServiceHelper()).getUserByUsername(user.getUsername());
+		if(user_by_username == null) {
+			(new UserDataServiceHelper()).saveUser(user);
+			return true;
+		}
+		return false;
 	}
 
 	public User getUserByUsername(String username) throws NoResultException {

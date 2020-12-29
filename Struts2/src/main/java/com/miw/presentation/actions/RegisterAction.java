@@ -53,9 +53,9 @@ public class RegisterAction extends ActionSupport implements RequestAware {
 		if (registerInfo.getAge() > 200) {
 			addFieldError("registerInfo.age", "Age field should not be greater than 200");
 		}
-		if (registerInfo.getPassword().length() > 100) {
+		if (registerInfo.getPassword().length() > 100 || registerInfo.getPassword().length() < 5) {
 			addFieldError("registerInfo.password",
-					"Password field should not be emtpy and have a max length of 100 characters");
+					"Password field should have a min length of 5 characters and a max length of 100");
 		}
 		if (!(registerInfo.getPassword().equals(registerInfo.getRepeatPassword()))) {
 			addFieldError("registerInfo.repeatPassword", "Password field and its confirmation should be equal");
@@ -71,12 +71,13 @@ public class RegisterAction extends ActionSupport implements RequestAware {
 	public String execute() throws Exception {
 		logger.debug("Execute RegisterAction");
 		UserManagerServiceHelper helper = new UserManagerServiceHelper();
-		User u = helper.getUserByUsername(registerInfo.getUsername());
-		if (u == null) {
-			helper.saveUser(registerInfo);
-			logger.debug("RegisterAction completed");
+		boolean registro = helper.registerUser(registerInfo);
+		if (registro) {
+			logger.debug("Register completed");
 			return SUCCESS;
 		}
+		logger.debug("Register failed");
+		request.put("userExists", "User already exists");
 		return ERROR;
 	}
 

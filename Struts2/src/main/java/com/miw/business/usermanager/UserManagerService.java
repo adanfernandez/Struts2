@@ -6,7 +6,7 @@ import com.miw.model.User;
 
 public interface UserManagerService {
 
-	public void saveUser(User user);
+	public boolean registerUser(User user);
 
 	public User getUserByUsername(String login) throws NoResultException;
 

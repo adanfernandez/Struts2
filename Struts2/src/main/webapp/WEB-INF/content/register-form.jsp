@@ -23,7 +23,7 @@
 		<article>
 			<label class="mytitle">Registro:</label><br />
 			<div style="color: red;">
-				<s:property value="#request.mymessage" />
+				<s:property value="#request.userExists" />
 				<br />
 			</div>
 			<s:form action="register"  >
