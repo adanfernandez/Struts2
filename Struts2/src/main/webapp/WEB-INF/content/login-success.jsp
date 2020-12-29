@@ -1,3 +1,4 @@
+<%@page import="com.miw.model.User"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html >
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
@@ -22,13 +23,21 @@
 	<section>
 		<article id="a01">
 			<label class="mytitle">Choose an option:</label><br /> 
-			<a href="show-books.action">Show Catalog</a><br /> 
+			<a href="show-books.action">Show Catalog</a><br />
 			<a href="show-special-offer.action">Show Special Offers!</a> 
+			<%
+				if(((User)session.getAttribute("loginInfo")).isAdmin()) {
+			%>	
+				<br /> 
+				<a href="add-book.action">Add book</a>
+			<% 
+				}
+			%>
+			
 		</article>
 	</section>
 	<footer>
-		<strong> Master in Web Engineering (miw.uniovi.es).</strong><br /> <em>University
-			of Oviedo </em><br/>
+		<strong> Master in Web Engineering (miw.uniovi.es).</strong><br /> <em>University of Oviedo </em><br/>
 			Visits:	<s:property value="%{#application.counter}" />
 			
 	</footer>

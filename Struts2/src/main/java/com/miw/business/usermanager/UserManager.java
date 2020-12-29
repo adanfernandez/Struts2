@@ -11,8 +11,9 @@ public class UserManager implements UserManagerService {
 
 	public boolean registerUser(User user) {
 		logger.debug("Saving user");
-		User user_by_username = (new UserDataServiceHelper()).getUserByUsername(user.getUsername());
+		User user_by_username = (new UserDataServiceHelper()).getUserByUsername(user.getUsername().toLowerCase());
 		if(user_by_username == null) {
+			user.setUsername(user.getUsername().toLowerCase());
 			(new UserDataServiceHelper()).saveUser(user);
 			return true;
 		}

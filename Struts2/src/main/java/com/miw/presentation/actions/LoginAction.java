@@ -75,7 +75,7 @@ public class LoginAction extends ActionSupport implements RequestAware, SessionA
 			return "login-error";
 		} else {
 			logger.debug("Login completed");
-			session.put("userInfo", user);
+			session.put("loginInfo", user);
 			return SUCCESS;
 		}
 	}

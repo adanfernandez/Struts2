@@ -50,7 +50,7 @@ public class UserDAO implements UserDataService {
 					.setParameter(2, password)
 					.getSingleResult();
 			return user;
-		} catch(NoResultException e) {
+		} catch(Exception e) {
 			return null;
 		} finally {
 			dba.closeEm();
