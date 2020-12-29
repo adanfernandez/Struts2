@@ -13,4 +13,8 @@ public class UserDataServiceHelper {
 	public User getUserByUsername(String username) throws NoResultException {
 		return (Factories.dataServices.getUserDataService()).getUserByUsername(username);
 	}
+	
+	public User getUserByUsernameAndPassword(String username, String password) throws NoResultException {
+		return (Factories.dataServices.getUserDataService()).getUserByUsernameAndPassword(username, password);
+	}
 }

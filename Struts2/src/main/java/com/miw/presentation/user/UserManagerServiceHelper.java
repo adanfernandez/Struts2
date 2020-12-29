@@ -14,11 +14,7 @@ public class UserManagerServiceHelper {
 		return (Factories.services.getUserManagerService()).registerUser(user);
 	}
 	
-	public User getUserByUsername(String username) throws NoResultException {
-		return (Factories.services.getUserManagerService()).getUserByUsername(username);
-	}
-	
-	public User getUserByCredentials(String login, String password) throws NoResultException {
-		return (Factories.services.getUserManagerService()).getUserByCredentials(login, password);
+	public User getUserByUsernameAndPassword(String username, String password) throws NoResultException {
+		return (Factories.services.getUserManagerService()).getUserByUsernameAndPassword(username, password);
 	}
 }

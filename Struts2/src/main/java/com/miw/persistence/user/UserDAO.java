@@ -40,4 +40,20 @@ public class UserDAO implements UserDataService {
 			dba.closeEm();
 		}
 	}
+	
+	public User getUserByUsernameAndPassword(String username, String password) throws NoResultException {
+		Dba dba = new Dba();
+		try {
+			EntityManager em = dba.getActiveEm();
+			User user = em.createQuery("SELECT u FROM User u WHERE u.username = ? AND u.password = ?", User.class)
+					.setParameter(1, username)
+					.setParameter(2, password)
+					.getSingleResult();
+			return user;
+		} catch(NoResultException e) {
+			return null;
+		} finally {
+			dba.closeEm();
+		}
+	}
 }

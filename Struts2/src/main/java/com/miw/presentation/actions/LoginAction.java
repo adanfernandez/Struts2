@@ -68,10 +68,9 @@ public class LoginAction extends ActionSupport implements RequestAware, SessionA
 		}
 		
 		UserManagerServiceHelper helper = new UserManagerServiceHelper();
-		User user = helper.getUserByCredentials(login.getLogin(), login.getPassword());
+		User user = helper.getUserByUsernameAndPassword(login.getLogin(), login.getPassword());
 		
 		if(user == null) {
-			logger.debug("Credentials are wrong: " + login);
 			request.put("mymessage", "Wrong credentials");
 			return "login-error";
 		} else {
