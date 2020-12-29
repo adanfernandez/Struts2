@@ -29,7 +29,7 @@
 				if(((User)session.getAttribute("loginInfo")).isAdmin()) {
 			%>	
 				<br /> 
-				<a href="add-book.action">Add book</a>
+				<a href="add-book-form.action">Add book</a>
 			<% 
 				}
 			%>
