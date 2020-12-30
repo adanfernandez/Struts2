@@ -41,8 +41,15 @@ public class BookDAO implements BookDataService {
 		Dba dba = new Dba();
 		try {
 			EntityManager em = dba.getActiveEm();
-			em.persist(book);
-			em.getTransaction().commit();
+
+			em.createNativeQuery("INSERT INTO BOOK(TITLE,DESCRIPTION,AUTHOR,TAXGROUP,BASEPRICE) VALUES (?,?,?,?,?)", Book.class)
+			.setParameter(1, book.getTitle())
+			.setParameter(2, book.getDescription())
+			.setParameter(3, book.getAuthor())
+			.setParameter(4, book.getVat().getTaxGroup())
+			.setParameter(5, book.getBasePrice())
+			.executeUpdate();
+            em.getTransaction().commit();
 			logger.debug("Book saved");
 			return true;
 		} catch (Exception e) {
