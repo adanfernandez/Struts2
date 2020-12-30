@@ -3,6 +3,7 @@ package com.miw.presentation.actions;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.RequestAware;
@@ -30,6 +31,7 @@ import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 				@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "loginInfo.login", message = "You must enter a value for login."),
 				@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "loginInfo.password", message = "You must enter a value for password.") })
 
+@ParentPackage(value ="miw.Amazin")
 public class LoginAction extends ActionSupport implements RequestAware, SessionAware {
 
 	Logger logger = Logger.getLogger(this.getClass());
