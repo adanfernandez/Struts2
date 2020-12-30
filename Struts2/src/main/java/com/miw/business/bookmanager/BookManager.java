@@ -6,7 +6,9 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.miw.business.BookDataServiceHelper;
+import com.miw.business.VATDataServiceHelper;
 import com.miw.model.Book;
+import com.miw.model.VAT;
 
 public class BookManager implements BookManagerService {
 	Logger logger = Logger.getLogger(this.getClass());
@@ -31,6 +33,10 @@ public class BookManager implements BookManagerService {
 	}
 
 	public boolean saveBook(Book book) throws Exception {
-		return (new BookDataServiceHelper()).saveBook(book);
+		VAT VAT_ok = (new VATDataServiceHelper()).getVatByTaxGroup(book.getVat().getTaxGroup());
+		if(VAT_ok != null) {
+			return (new BookDataServiceHelper()).saveBook(book);
+		}
+		return false;
 	}
 }

@@ -6,5 +6,5 @@ import com.miw.model.VAT;
 
 public interface VATDataService {
 	public List<VAT> getVATs() throws Exception ;
-
+	public VAT getVATByTaxGroup(int taxGroup);
 }
