@@ -33,8 +33,8 @@ public class BookManager implements BookManagerService {
 	}
 
 	public boolean saveBook(Book book) throws Exception {
-		VAT VAT_ok = (new VATDataServiceHelper()).getVatByTaxGroup(book.getVat().getTaxGroup());
-		if(VAT_ok != null) {
+		VAT vat = (new VATDataServiceHelper()).getVATByTaxGroup(book.getVat().getTaxGroup());
+		if(vat != null) {
 			return (new BookDataServiceHelper()).saveBook(book);
 		}
 		return false;

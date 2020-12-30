@@ -23,7 +23,7 @@
 		<article>
 			<label class="mytitle">Add books:</label><br />
 			<div style="color: red;">
-				<s:property value="#request.mymessage" />
+				<s:property value="#request.bookError" />
 				<br />
 			</div>
 			<s:form action="add-book">

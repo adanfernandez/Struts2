@@ -38,7 +38,7 @@ public class VATDAO implements VATDataService  {
 		Dba dba = new Dba();
 		try {
 			EntityManager em = dba.getActiveEm();
-			VAT vat = em.createQuery("SELECT v FROM VAT v WHERE v.taxgroup = ?", VAT.class)
+			VAT vat = em.createQuery("SELECT v FROM VAT v WHERE v.taxGroup = ?", VAT.class)
 					.setParameter(1, taxGroup)
 					.getSingleResult();
 			return vat;

@@ -11,7 +11,7 @@ public class VATDataServiceHelper {
 		return (Factories.dataServices.getVATDataService()).getVATs();
 	}
 	
-	public VAT getVatByTaxGroup(int taxGroup) {
+	public VAT getVATByTaxGroup(int taxGroup) {
 		return (Factories.dataServices.getVATDataService()).getVATByTaxGroup(taxGroup);
 	}
 }

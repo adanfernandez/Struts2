@@ -12,7 +12,7 @@ public class AddBookFormAction extends ActionSupport {
 	Logger logger = Logger.getLogger(this.getClass());
 	
 	public String execute() {
-		logger.debug("The add videos screen is displayed");
+		logger.debug("The add book screen is displayed");
 		return SUCCESS;
 	}
 }

@@ -18,7 +18,7 @@ import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
 @Results({
 		@Result(name = "success", location = "/WEB-INF/content/show-books.jsp"),
-		@Result(name = "error", location = "/index.jsp"),
+		@Result(name = "error", location = "/WEB-INF/content/add-book-form.jsp"),
 		@Result(name = "input", location = "/WEB-INF/content/add-book-form.jsp")
 })
 
