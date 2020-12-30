@@ -7,5 +7,5 @@ import com.miw.model.Book;
 public interface BookDataService {
 
 	List<Book> getBooks() throws Exception;
-
+	boolean saveBook(Book book) throws Exception;
 }

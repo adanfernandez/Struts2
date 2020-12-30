@@ -6,8 +6,8 @@ import com.miw.infrastructure.Factories;
 import com.miw.model.User;
 
 public class UserDataServiceHelper {
-	public void saveUser(User user) {
-		(Factories.dataServices.getUserDataService()).saveUser(user);
+	public boolean saveUser(User user) {
+		return (Factories.dataServices.getUserDataService()).saveUser(user);
 	}
 	
 	public User getUserByUsername(String username) throws NoResultException {

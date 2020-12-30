@@ -10,4 +10,8 @@ public class BookDataServiceHelper {
 	public List<Book> getBooks() throws Exception {
 		return (Factories.dataServices.getBookDataService()).getBooks();
 	}
+	
+	public boolean saveBook(Book book) throws Exception {
+		return (Factories.dataServices.getBookDataService()).saveBook(book);
+	}
 }

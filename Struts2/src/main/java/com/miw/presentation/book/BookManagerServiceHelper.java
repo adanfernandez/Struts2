@@ -21,4 +21,9 @@ public class BookManagerServiceHelper {
 		return (Factories.services.getBookManagerService()).getSpecialOffer();
 	}
 	
+	public boolean saveBook(Book book) throws Exception {
+		logger.debug("Adding book");
+		return (Factories.services.getBookManagerService()).saveBook(book);
+	}
+	
 }

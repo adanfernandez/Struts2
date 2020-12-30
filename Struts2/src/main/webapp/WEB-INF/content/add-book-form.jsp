@@ -26,13 +26,13 @@
 				<s:property value="#request.mymessage" />
 				<br />
 			</div>
-			<s:form >
-				<s:textfield name="addBookInfo.title" label="title" />
-				<s:textfield name="addBookInfo.author" label="author" />
-				<s:textarea name="addBookInfo.description" label="description" />
-				<s:textfield name="addBookInfo.basePrice" label="basePrice" />
-				<s:textfield name="addBookInfo.vat" label="vat" />
-				<s:submit label="registro" />
+			<s:form action="add-book">
+				<s:textfield name="bookInfo.title" label="title" />
+				<s:textfield name="bookInfo.author" label="author" />
+				<s:textarea name="bookInfo.description" label="description" />
+				<s:textfield name="bookInfo.basePrice" label="basePrice" />
+				<s:textfield name="vat.taxGroup" label="taxGroup" />
+				<s:submit label="Add book" />
 			</s:form>
 		</article>
 	</section>

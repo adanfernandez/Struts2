@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import com.miw.model.Book;
 import com.miw.persistence.Dba;
 
-public class BookDAO implements BookDataService  {
+public class BookDAO implements BookDataService {
 
 	protected Logger logger = Logger.getLogger(getClass());
 
@@ -23,7 +23,7 @@ public class BookDAO implements BookDataService  {
 
 			resultList = em.createQuery("Select a From Book a", Book.class).getResultList();
 
-			logger.debug("Result list: "+ resultList.toString());
+			logger.debug("Result list: " + resultList.toString());
 			for (Book next : resultList) {
 				logger.debug("next book: " + next);
 			}
@@ -35,5 +35,20 @@ public class BookDAO implements BookDataService  {
 
 		// We return the result
 		return resultList;
+	}
+
+	public boolean saveBook(Book book) throws Exception {
+		Dba dba = new Dba();
+		try {
+			EntityManager em = dba.getActiveEm();
+			em.persist(book);
+			em.getTransaction().commit();
+			logger.debug("Book saved");
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			dba.closeEm();
+		}
 	}
 }

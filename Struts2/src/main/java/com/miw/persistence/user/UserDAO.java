@@ -12,15 +12,16 @@ public class UserDAO implements UserDataService {
 
 	protected Logger logger = Logger.getLogger(getClass());
 
-	public void saveUser(User user) {
+	public boolean saveUser(User user) {
 		Dba dba = new Dba();
 		try {
 			EntityManager em = dba.getActiveEm();
 			em.persist(user);
 			em.getTransaction().commit();
 			logger.debug("User saved");
+			return true;
 		} catch(Exception e) {
-			
+			return false;
 		} finally {
 			dba.closeEm();
 		}
