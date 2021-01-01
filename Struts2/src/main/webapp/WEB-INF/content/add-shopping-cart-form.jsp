@@ -16,7 +16,7 @@
 	<header>
 		<h1 class="header">Amazin.com</h1>
 		<h2 class="centered">
-			Welcome to the <em>smallest</em> online shop in the world!!
+			Add to the shopping cart...
 		</h2>
 	</header>
 	<nav>
@@ -24,36 +24,14 @@
 			<li><a href="index.action">Start</a></li>
 			<li><a href="http://miw.uniovi.es">About</a></li>
 			<li><a href="mailto:dd@email.com">Contact</a></li>
-			<li><a href="add-shopping-cart-form.action"><s:text
-						name="Add to shopping cart" /></a></li>
-			<li><a href="view-shopping-cart.action"><s:text
-						name="View shopping cart" /></a></li>
+			<li><a href="add-shopping-cart-form.action"><s:text name="Add to shopping cart" /></a></li>
+			<li><a href="view-shopping-cart-form.action"><s:text name="View shopping cart" /></a></li>
 			<li><a href="logout.action"><s:text name="logout" /></a></li>
 		</ul>
 	</nav>
 	<section>
 		<article>
-			<table>
-				<caption>Our catalog:</caption>
-				<thead>
-					<tr>
-						<th>Title</th>
-						<th>Author</th>
-						<th>Description</th>
-						<th>Price</th>
-					</tr>
-				</thead>
-				<tbody>
-					<s:iterator value="#request.books" var="book">
-						<tr>
-							<td><s:property value="#book.title" /></td>
-							<td><s:property value="#book.author" /></td>
-							<td><s:property value="#book.description" /></td>
-							<td><s:property value="#book.price" /> &euro;</td>
-						</tr>
-					</s:iterator>
-				</tbody>
-			</table>
+			<h3>Add books to the shopping cart!</h3>
 		</article>
 	</section>
 	<footer>
