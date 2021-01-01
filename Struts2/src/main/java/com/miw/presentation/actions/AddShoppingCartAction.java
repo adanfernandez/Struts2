@@ -1,5 +1,6 @@
 package com.miw.presentation.actions;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,10 +12,6 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.miw.model.ShoppingCart;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
-import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
-import com.opensymphony.xwork2.validator.annotations.Validations;
-import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
 @Results({ @Result(name = "success", location = "/WEB-INF/content/add-shopping-cart-form.jsp"),
 		// For validation
@@ -54,7 +51,28 @@ public class AddShoppingCartAction extends ActionSupport implements RequestAware
 			request.put("noBookSelected", "You have to select at least one book");
 			return "no-book-selected";
 		}
+		ShoppingCart cart = (ShoppingCart) session.get("shopping-cart");
+		if(cart == null) {
+			cart = new ShoppingCart();
+			session.put("shopping-cart", cart);
+		}
+		for(String book_id : this.addBooks) {
+			if(book_id != null) {
+				logger.debug("Book has been added to the cart");
+				add_book(cart, book_id);
+				logger.debug("Cart state: " + cart);
+			}
+		}
 		return SUCCESS;
+	}
+	
+	private void add_book(ShoppingCart cart, String id) {
+		Integer numero = cart.getBooks().get(id);
+		if (numero == null) {
+			cart.getBooks().put(id, 1);
+		} else { 
+			cart.getBooks().put(id, ++numero);
+		}
 	}
 
 }

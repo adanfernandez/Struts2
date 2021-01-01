@@ -11,14 +11,5 @@ public class ShoppingCart {
 	
 	public HashMap<String, Integer> getBooks() {
 		return books;
-	}
-	
-	public void add(String book) {
-		Integer numero = books.get(book);
-		if (numero == null) {
-			books.put(book, 1);
-		} else { 
-			books.put(book, ++numero);
-		}
-	}
+	}	
 }
