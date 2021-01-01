@@ -15,23 +15,32 @@
 <body>
 	<header>
 		<h1 class="header">Amazin.com</h1>
-		<h2 class="centered">
-			Add to the shopping cart...
-		</h2>
+		<h2 class="centered">Add to the shopping cart...</h2>
 	</header>
 	<nav>
 		<ul>
 			<li><a href="index.action">Start</a></li>
 			<li><a href="http://miw.uniovi.es">About</a></li>
 			<li><a href="mailto:dd@email.com">Contact</a></li>
-			<li><a href="add-shopping-cart-form.action"><s:text name="Add to shopping cart" /></a></li>
-			<li><a href="view-shopping-cart-form.action"><s:text name="View shopping cart" /></a></li>
+			<li><a href="add-shopping-cart-form.action"><s:text
+						name="Add to shopping cart" /></a></li>
+			<li><a href="view-shopping-cart-form.action"><s:text
+						name="View shopping cart" /></a></li>
 			<li><a href="logout.action"><s:text name="logout" /></a></li>
 		</ul>
 	</nav>
 	<section>
 		<article>
 			<h3>Add books to the shopping cart!</h3>
+			<div style="color: red;">
+				<s:property value="#request.notBooksSelected" />
+				<br />
+			</div>
+			<s:form action="add-to-shopping-cart">
+				<s:checkboxlist name="addBooks"
+					list="#request.books" listKey="id" listValue="title" />
+				<s:submit key="CartAnadir" />
+			</s:form>
 		</article>
 	</section>
 	<footer>
