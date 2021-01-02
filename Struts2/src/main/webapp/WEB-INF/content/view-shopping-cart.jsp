@@ -51,6 +51,10 @@
 					</s:iterator>
 				</tbody>
 			</table>
+			<span>Precio total:</span>
+			<span>
+				<s:property value="#request.price"></s:property>
+			</span>
 		</article>
 	</section>
 	<footer>

@@ -17,20 +17,23 @@ public class ViewShoppingCartAction extends ActionSupport implements SessionAwar
 	private static final long serialVersionUID = 1182040323205334068L;
 	Logger logger = Logger.getLogger(this.getClass());
 	private Map<String, Object> session = null;
-	Map<Book, Integer> books;
+	Map<Book, Double> books;
 	Map<String,Object> request = null;
 
 	public String execute() {
 		logger.debug("The screen of the view of the sopping cart is displayed");
-		books = new HashMap<Book, Integer>();
+		books = new HashMap<Book, Double>();
 		ShoppingCart cart = (ShoppingCart)session.get("shopping-cart");
 		BookManagerServiceHelper helper = new BookManagerServiceHelper();
+		double price = 0;
 		for(String id_book : cart.getBooks().keySet()) {
 			Book book = helper.getBookById(id_book);
-			int numero = cart.getBooks().get(id_book);
+			double numero = cart.getBooks().get(id_book);
+			price += book.getPrice();
 			books.put(book, numero);
 		}
 		request.put("booksInCart", books);
+		request.put("price", price);
 		return SUCCESS;
 	}
 	
