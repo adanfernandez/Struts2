@@ -62,6 +62,7 @@ public class AddShoppingCartAction extends ActionSupport implements RequestAware
 				logger.debug("Cart state: " + cart);
 			}
 		}
+		request.put("bookIntoCart", "The book has beed added to the shopping cart");
 		return SUCCESS;
 	}
 	

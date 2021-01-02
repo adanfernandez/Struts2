@@ -32,13 +32,17 @@
 	<section>
 		<article>
 			<h3>Add books to the shopping cart!</h3>
+			<div style="color: green;">
+				<s:property value="#request.bookIntoCart" />
+				<br />
+			</div>
 			<div style="color: red;">
 				<s:property value="#request.noBookSelected" />
 				<br />
 			</div>
 			<s:form action="add-shopping-cart">
-				<s:checkboxlist name="addBooks"
-					list="#application.books" listKey="id" listValue="title" />
+				<s:checkboxlist name="addBooks" list="#application.books"
+					listKey="id" listValue="title" value="false" />
 				<s:submit key="CartAnadir" />
 			</s:form>
 		</article>
