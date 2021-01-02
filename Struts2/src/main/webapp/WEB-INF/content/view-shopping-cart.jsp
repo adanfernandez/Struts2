@@ -54,14 +54,14 @@
 					</s:iterator>
 				</tbody>
 			</table>
-			<span>Precio total:</span> <span> <s:property
+			<span>Total price:</span> <span> <s:property
 					value="#request.price"></s:property>
 			</span>
 			<%
 				}
 			%>
 			<%
-				if (request.getAttribute("booksInCart") != null) {
+				if (request.getAttribute("booksInCart") == null) {
 			%>
 				<span>You dont have books to be shown</span>
 			<%
