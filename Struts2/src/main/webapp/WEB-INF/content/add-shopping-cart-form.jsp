@@ -24,7 +24,7 @@
 			<li><a href="mailto:dd@email.com">Contact</a></li>
 			<li><a href="add-shopping-cart-form.action"><s:text
 						name="Add to shopping cart" /></a></li>
-			<li><a href="view-shopping-cart-form.action"><s:text
+			<li><a href="view-shopping-cart.action"><s:text
 						name="View shopping cart" /></a></li>
 			<li><a href="logout.action"><s:text name="logout" /></a></li>
 		</ul>

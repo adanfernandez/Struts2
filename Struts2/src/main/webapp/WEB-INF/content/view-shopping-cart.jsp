@@ -31,6 +31,9 @@
 	</nav>
 	<section>
 		<article>
+			<%
+				if (request.getAttribute("booksInCart") != null) {
+			%>
 			<h3>View of the shopping cart!</h3>
 			<table>
 				<caption>The books you have in the shopping cart</caption>
@@ -51,10 +54,19 @@
 					</s:iterator>
 				</tbody>
 			</table>
-			<span>Precio total:</span>
-			<span>
-				<s:property value="#request.price"></s:property>
+			<span>Precio total:</span> <span> <s:property
+					value="#request.price"></s:property>
 			</span>
+			<%
+				}
+			%>
+			<%
+				if (request.getAttribute("booksInCart") != null) {
+			%>
+				<span>You dont have books to be shown</span>
+			<%
+				}
+			%>
 		</article>
 	</section>
 	<footer>
