@@ -31,6 +31,7 @@ public class ViewShoppingCartAction extends ActionSupport implements SessionAwar
 				Book book = helper.getBookById(id_book);
 				double numero = cart.getBooks().get(id_book);
 				price += book.getPrice()*numero;
+				price = Math.round(price * Math.pow(10, 2))/Math.pow(10, 2);
 				books.put(book, numero);
 			}
 			request.put("booksInCart", books);

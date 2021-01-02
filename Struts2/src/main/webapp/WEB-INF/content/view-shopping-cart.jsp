@@ -55,7 +55,7 @@
 				</tbody>
 			</table>
 			<span>Total price:</span> <span> <s:property
-					value="#request.price"></s:property>
+					value="#request.price"></s:property> &euro;
 			</span>
 			<%
 				}
@@ -63,7 +63,7 @@
 			<%
 				if (request.getAttribute("booksInCart") == null) {
 			%>
-				<span>You dont have books to be shown</span>
+			<span>You dont have books to be shown</span>
 			<%
 				}
 			%>
