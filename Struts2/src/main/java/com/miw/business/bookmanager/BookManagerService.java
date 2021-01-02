@@ -8,4 +8,5 @@ public interface BookManagerService {
 	public List<Book> getBooks() throws Exception;
 	public Book getSpecialOffer() throws Exception;
 	public boolean saveBook(Book book) throws Exception;
+	public Book getBookById(String book_id);
 }

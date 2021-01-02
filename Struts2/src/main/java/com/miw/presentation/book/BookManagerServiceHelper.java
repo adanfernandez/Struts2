@@ -26,4 +26,9 @@ public class BookManagerServiceHelper {
 		return (Factories.services.getBookManagerService()).saveBook(book);
 	}
 	
+	public Book getBookById(String book_id) {
+		logger.debug("Getting book by id");
+		return (Factories.services.getBookManagerService()).getBookById(book_id);
+	}
+	
 }

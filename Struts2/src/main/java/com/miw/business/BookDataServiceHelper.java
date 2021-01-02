@@ -14,4 +14,9 @@ public class BookDataServiceHelper {
 	public boolean saveBook(Book book) throws Exception {
 		return (Factories.dataServices.getBookDataService()).saveBook(book);
 	}
+	
+
+	public Book getBookById(String book_id) {
+		return (Factories.dataServices.getBookDataService()).getBookById(book_id);
+	}
 }

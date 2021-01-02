@@ -15,23 +15,42 @@
 <body>
 	<header>
 		<h1 class="header">Amazin.com</h1>
-		<h2 class="centered">
-			View your shopping cart...
-		</h2>
+		<h2 class="centered">View your shopping cart...</h2>
 	</header>
 	<nav>
 		<ul>
 			<li><a href="index.action">Start</a></li>
 			<li><a href="http://miw.uniovi.es">About</a></li>
 			<li><a href="mailto:dd@email.com">Contact</a></li>
-			<li><a href="add-shopping-cart-form.action"><s:text name="Add to shopping cart" /></a></li>
-			<li><a href="view-shopping-cart.action"><s:text name="View shopping cart" /></a></li>
+			<li><a href="add-shopping-cart-form.action"><s:text
+						name="Add to shopping cart" /></a></li>
+			<li><a href="view-shopping-cart.action"><s:text
+						name="View shopping cart" /></a></li>
 			<li><a href="logout.action"><s:text name="logout" /></a></li>
 		</ul>
 	</nav>
 	<section>
 		<article>
 			<h3>View of the shopping cart!</h3>
+			<table>
+				<caption>The books you have in the shopping cart</caption>
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Quantity
+						<th>Price by unit</th>
+					</tr>
+				</thead>
+				<tbody>
+					<s:iterator value="#request.booksInCart">
+						<tr>
+							<td><s:property value="key.title" /></td>
+							<td><s:property value="value" /></td>
+							<td><s:property value="key.price" /></td>
+						</tr>
+					</s:iterator>
+				</tbody>
+			</table>
 		</article>
 	</section>
 	<footer>

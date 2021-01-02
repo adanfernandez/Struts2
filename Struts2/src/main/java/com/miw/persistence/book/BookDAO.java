@@ -3,6 +3,7 @@ package com.miw.persistence.book;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import org.apache.log4j.Logger;
 
@@ -54,6 +55,21 @@ public class BookDAO implements BookDataService {
 			return true;
 		} catch (Exception e) {
 			return false;
+		} finally {
+			dba.closeEm();
+		}
+	}
+
+	public Book getBookById(String book_id) {
+		Dba dba = new Dba();
+		try {
+			EntityManager em = dba.getActiveEm();
+			Book book = em.createQuery("SELECT b FROM Book b WHERE b.id = ?", Book.class)
+					.setParameter(1, Integer.parseInt(book_id))
+					.getSingleResult();
+			return book;
+		} catch(NoResultException e) {
+			return null;
 		} finally {
 			dba.closeEm();
 		}
