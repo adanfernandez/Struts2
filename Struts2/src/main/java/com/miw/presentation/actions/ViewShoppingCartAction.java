@@ -28,7 +28,7 @@ public class ViewShoppingCartAction extends ActionSupport implements SessionAwar
 			BookManagerServiceHelper helper = new BookManagerServiceHelper();
 			double price = 0;
 			for (String id_book : cart.getBooks().keySet()) {
-				Book book = helper.getBookById(id_book);
+				Book book = helper.getBookById(Integer.parseInt(id_book));
 				double numero = cart.getBooks().get(id_book);
 				price += book.getPrice()*numero;
 				price = Math.round(price * Math.pow(10, 2))/Math.pow(10, 2);

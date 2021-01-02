@@ -8,5 +8,5 @@ public interface BookDataService {
 
 	List<Book> getBooks() throws Exception;
 	boolean saveBook(Book book) throws Exception;
-	Book getBookById(String book_id);
+	Book getBookById(int book_id);
 }

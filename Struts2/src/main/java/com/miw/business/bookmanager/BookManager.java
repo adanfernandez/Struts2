@@ -40,7 +40,7 @@ public class BookManager implements BookManagerService {
 		return false;
 	}
 
-	public Book getBookById(String book_id) {
+	public Book getBookById(int book_id) {
 		logger.debug("Asking for book");
 		Book book = (new BookDataServiceHelper()).getBookById(book_id);
 		book.setPrice(book.getBasePrice() * (1 + book.getVat().getValue()));

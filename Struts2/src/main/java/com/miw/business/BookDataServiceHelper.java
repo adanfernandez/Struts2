@@ -16,7 +16,7 @@ public class BookDataServiceHelper {
 	}
 	
 
-	public Book getBookById(String book_id) {
+	public Book getBookById(int book_id) {
 		return (Factories.dataServices.getBookDataService()).getBookById(book_id);
 	}
 }

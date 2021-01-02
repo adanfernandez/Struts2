@@ -60,12 +60,12 @@ public class BookDAO implements BookDataService {
 		}
 	}
 
-	public Book getBookById(String book_id) {
+	public Book getBookById(int book_id) {
 		Dba dba = new Dba();
 		try {
 			EntityManager em = dba.getActiveEm();
 			Book book = em.createQuery("SELECT b FROM Book b WHERE b.id = ?", Book.class)
-					.setParameter(1, Integer.parseInt(book_id))
+					.setParameter(1, book_id)
 					.getSingleResult();
 			return book;
 		} catch(NoResultException e) {
