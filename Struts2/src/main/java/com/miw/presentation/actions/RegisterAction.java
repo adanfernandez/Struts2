@@ -23,7 +23,7 @@ import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.username", message = "You must enter a value for username"),
 		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.password", message = "You must enter a value for password"),
 		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.repeatPassword", message = "You must enter a value for the confirmation of the password") }, regexFields = {
-				@RegexFieldValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.phone", regex = "[9|6|7][0-9]{8}", key = "registerPhoneErr") })
+				@RegexFieldValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.phone", regex = "[9|6|7][0-9]{8}", message = "You must enter a correct mobile phone") })
 
 public class RegisterAction extends ActionSupport implements RequestAware {
 
