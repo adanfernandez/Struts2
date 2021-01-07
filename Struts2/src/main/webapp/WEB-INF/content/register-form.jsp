@@ -27,12 +27,12 @@
 				<br />
 			</div>
 			<s:form action="register"  >
-				<s:textfield name="registerInfo.username" label="username" />
-				<s:textfield name="registerInfo.phone" label="phone" />
-				<s:textfield name="registerInfo.age" label="age" />
-				<s:password name="registerInfo.password" label="password" />
+				<s:textfield name="registerInfo.username" label="Username" />
+				<s:textfield name="registerInfo.phone" label="Phone" />
+				<s:textfield name="registerInfo.age" label="Age" />
+				<s:password name="registerInfo.password" label="Password" />
 				<s:password name="registerInfo.repeatPassword" label="Repeat password" />
-				<s:submit label="registro" />
+				<s:submit value="Register" />
 			</s:form>
 		</article>
 	</section>

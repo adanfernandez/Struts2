@@ -10,21 +10,20 @@ import org.apache.struts2.interceptor.RequestAware;
 import com.miw.model.User;
 import com.miw.presentation.user.UserManagerServiceHelper;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
-@Results({
-		@Result(name = "success", location = "/index.jsp"),
+@Results({ @Result(name = "success", location = "/index.jsp"),
 		@Result(name = "error", location = "/WEB-INF/content/register-form.jsp"),
-		@Result(name = "input", location = "/WEB-INF/content/register-form.jsp")
-})
+		@Result(name = "input", location = "/WEB-INF/content/register-form.jsp") })
 
 @Validations(requiredStrings = {
 		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.username", message = "You must enter a value for username"),
 		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.password", message = "You must enter a value for password"),
-		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.repeatPassword", message = "You must enter a value for the confirmation of the password") })
-
+		@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.repeatPassword", message = "You must enter a value for the confirmation of the password") }, regexFields = {
+				@RegexFieldValidator(type = ValidatorType.SIMPLE, fieldName = "registerInfo.phone", regex = "[9|6|7][0-9]{8}", key = "registerPhoneErr") })
 
 public class RegisterAction extends ActionSupport implements RequestAware {
 
@@ -45,10 +44,12 @@ public class RegisterAction extends ActionSupport implements RequestAware {
 	public void validate() {
 		logger.debug("validating RegisterAction");
 		if (registerInfo.getUsername().length() > 150) {
-			addFieldError("registerInfo.username", "Username field should not be emtpy and have a max length of 150 characters");
+			addFieldError("registerInfo.username",
+					"Username field should not be emtpy and have a max length of 150 characters");
 		}
 		if (registerInfo.getPhone().length() > 30) {
-			addFieldError("registerInfo.phone", "Phone field should not be emtpy and have a max length of 30 characters");
+			addFieldError("registerInfo.phone",
+					"Phone field should not be emtpy and have a max length of 30 characters");
 		}
 		if (registerInfo.getAge() > 200) {
 			addFieldError("registerInfo.age", "Age field should not be greater than 200");

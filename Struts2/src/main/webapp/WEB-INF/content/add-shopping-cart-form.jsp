@@ -43,7 +43,7 @@
 			<s:form action="add-shopping-cart">
 				<s:checkboxlist name="addBooks" list="#application.books"
 					listKey="id" listValue="title" value="false" />
-				<s:submit key="CartAnadir" />
+				<s:submit value="Add to shopping cart" />
 			</s:form>
 		</article>
 	</section>

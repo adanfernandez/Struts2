@@ -30,12 +30,12 @@
 				<br />
 			</div>
 			<s:form action="add-book">
-				<s:textfield name="bookInfo.title" label="title" />
-				<s:textfield name="bookInfo.author" label="author" />
-				<s:textarea name="bookInfo.description" label="description" />
-				<s:textfield name="bookInfo.basePrice" label="basePrice" />
-				<s:textfield name="vat.taxGroup" label="taxGroup" />
-				<s:submit label="Add book" />
+				<s:textfield name="bookInfo.title" label="Title" />
+				<s:textfield name="bookInfo.author" label="Author" />
+				<s:textarea name="bookInfo.description" label="Description" />
+				<s:textfield name="bookInfo.basePrice" label="Base price" />
+				<s:textfield name="vat.taxGroup" label="Taxgroup" />
+				<s:submit value="Add book" />
 			</s:form>
 		</article>
 	</section>
