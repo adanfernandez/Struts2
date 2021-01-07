@@ -1,12 +1,9 @@
 package com.miw.presentation.actions;
 
 import java.util.List;
-
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 
