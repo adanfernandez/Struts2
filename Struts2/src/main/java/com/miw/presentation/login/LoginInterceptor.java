@@ -3,7 +3,6 @@ package com.miw.presentation.login;
 import org.apache.log4j.Logger;
 import org.apache.struts2.StrutsStatics;
 
-import com.miw.model.LoginInfo;
 import com.miw.model.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
