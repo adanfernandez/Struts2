@@ -99,6 +99,7 @@ public class AddBookAction extends ActionSupport implements RequestAware, Applic
 				books = helper.getBooks();
 				application.replace("books", books);
 			}
+			request.put("addedBook", "The Book has been added");
 			return SUCCESS;
 		}
 		logger.debug("Book not saved");

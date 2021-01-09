@@ -1,6 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html >
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
 <title>Amazin</title>
 <link rel="stylesheet" href="css/style.css" />
@@ -29,12 +29,16 @@
 				<s:property value="#request.bookError" />
 				<br />
 			</div>
+			<div style="color: green;">
+				<s:property value="#request.addedBook" />
+				<br />
+			</div>
 			<s:form action="add-book">
-				<s:textfield name="bookInfo.title" label="Title" />
-				<s:textfield name="bookInfo.author" label="Author" />
-				<s:textarea name="bookInfo.description" label="Description" />
-				<s:textfield name="bookInfo.basePrice" label="Base price" />
-				<s:textfield name="vat.taxGroup" label="Taxgroup" />
+				<s:textfield name="bookInfo.title" label="Title" value=""/>
+				<s:textfield name="bookInfo.author" label="Author" value=""/>
+				<s:textarea name="bookInfo.description" label="Description" value=""/>
+				<s:textfield name="bookInfo.basePrice" label="Base price" value="" />
+				<s:textfield name="vat.taxGroup" label="Taxgroup" value="" />
 				<s:submit value="Add book" />
 			</s:form>
 		</article>
