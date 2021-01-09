@@ -32,8 +32,12 @@ public class AddShoppingCartFormAction extends ActionSupport  implements Request
 		logger.debug("The add book screen is displayed");
 		BookManagerServiceHelper helper = new BookManagerServiceHelper();
 		try {
-			List<Book> books = helper.getBooks();
-			application.put("books", books);
+			@SuppressWarnings("unchecked")
+			List<Book> books = (List<Book>) application.get("books");
+			if(books == null) {
+				books = helper.getBooks();
+				application.put("books", books);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

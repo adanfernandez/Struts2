@@ -1,10 +1,12 @@
 package com.miw.presentation.actions;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
+import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 
 import com.miw.model.Book;
@@ -17,7 +19,7 @@ import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
 @Results({
-		@Result(name = "success", location = "/WEB-INF/content/show-books.jsp"),
+		@Result(name = "success", location = "/WEB-INF/content/add-book-form.jsp"),
 		@Result(name = "error", location = "/WEB-INF/content/add-book-form.jsp"),
 		@Result(name = "input", location = "/WEB-INF/content/add-book-form.jsp")
 })
@@ -33,7 +35,7 @@ requiredFields = {
 })
 
 
-public class AddBookAction extends ActionSupport implements RequestAware {
+public class AddBookAction extends ActionSupport implements RequestAware, ApplicationAware {
 
 	Logger logger = Logger.getLogger(this.getClass());
 	private static final long serialVersionUID = 2651261795976314789L;
@@ -43,6 +45,8 @@ public class AddBookAction extends ActionSupport implements RequestAware {
 	private String prueba = null;
 	
 	private Map<String, Object> request;
+	private Map<String, Object> application = null;
+
 
 	public String getPrueba() {
 		return prueba;
@@ -77,6 +81,10 @@ public class AddBookAction extends ActionSupport implements RequestAware {
 	public void setRequest(Map<String, Object> request) {
 		this.request = request;
 	}
+	
+	public void setApplication(Map<String, Object> application) {
+		this.application = application;
+	}
 
 	@Override
 	public String execute() throws Exception {
@@ -85,11 +93,19 @@ public class AddBookAction extends ActionSupport implements RequestAware {
 		BookManagerServiceHelper helper = new BookManagerServiceHelper();
 		boolean is_saved = helper.saveBook(bookInfo);
 		if (is_saved) {
+			@SuppressWarnings("unchecked")
+			List<Book> books = (List<Book>) application.get("books");
+			if(books != null) {
+				books = helper.getBooks();
+				application.replace("books", books);
+			}
 			return SUCCESS;
 		}
 		logger.debug("Book not saved");
 		request.put("bookError", "The Book could not be saved");
 		return ERROR;
 	}
+
+	
 
 }
